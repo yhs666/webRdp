@@ -93,7 +93,7 @@ DATABASES = {
 
         'NAME': 'wasu',
         'USER':'wasu',
-        'PASSWORD': 'www.wasu.com',
+        'PASSWORD': '***********',
         'HOST': 'localhost',
         'PORT': '3306',
         #'CONN_MAX_AGE':60,
