@@ -1,0 +1,179 @@
+{% extends "fmbase.html" %}
+{% block page-content %}
+<link href="/static/liger/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+<script src="/static/liger/js/base.js" type="text/javascript"></script>
+
+<script src="/static/js/libs/json2.js" type="text/javascript"></script>
+<script src="/static/liger/js/ping.js" type="text/javascript"></script>
+
+
+ <style>
+.ui-progressbar {
+	position: relative;
+}
+.progress-label {
+	position: absolute;
+	left: 50%;
+	top: 4px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #fff;
+}
+h4{
+	padding:5px 0 5px 0;
+
+}
+#appendedDropdownButton{
+	width:200%;
+}
+.alert{
+	display:none;
+}
+</style>
+
+<div id="page-content">
+	<!-- page header -->
+	<h1 id="page-header">Ps Ping</h1>
+	<div class="fluid-container">	
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+		
+			<!-- row-fluid -->
+			<div class="row-fluid">
+				<!-- article -->	
+				<article class="span12">
+					<!-- new widget -->
+					<div class="jarviswidget" id="widget-id-4">
+					    <header>
+			                <h2>Run Commands</h2>                           
+					    </header>
+					    <!-- wrap div -->
+					    <div>
+					        <div class="jarviswidget-editbox">
+					            <div>
+					                <label>Title:</label>
+					                <input type="text" />
+					            </div>
+					            <div>
+					                <label>Styles:</label>
+					                <span data-widget-setstyle="purple" class="purple-btn"></span>
+					                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+					                <span data-widget-setstyle="green" class="green-btn"></span>
+					                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+					                <span data-widget-setstyle="orange" class="orange-btn"></span>
+					                <span data-widget-setstyle="pink" class="pink-btn"></span>
+					                <span data-widget-setstyle="red" class="red-btn"></span>
+					                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+					                <span data-widget-setstyle="black" class="black-btn"></span>
+					            </div>
+					        </div>
+					        <div > 
+					        <!-- content goes here -->
+					        <form class="form-horizontal"   method="get" >
+										
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Hostname Or IP:</label>
+    <div class="controls">
+      <input type="text" id="pingname" placeholder="127.0.0.1" >
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Ping times:</label>
+    <div class="controls">
+      <input type="text" id="pingn"  value="10" >
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Port:</label>
+    <div class="controls">
+      <input type="text" id="port"  value="80" >
+    </div>
+  </div>
+  <div>
+   <div class="control-group">
+   		<label class="control-label" for="inputEmail"></label>
+   		 <div class="controls">
+	  		<select  class="form-control" id ="history"  selected = "NoUseHistroy">
+	         <option>Prompte</option>
+	         <option selected >NoUseHistroy</option>
+	         <option>UseHistroy</option>
+			</select>
+		</div>
+    </div>
+  </div>
+  <div>
+   <div class="control-group">
+      		<label class="control-label" for="inputEmail"></label>
+   		 <div class="controls">
+	 		<button type="button" class="btn btn-primary"  id="run" >Run</button> 
+	 		<input type="text"  style="border:0;background-color:transparent;" id="showTime">
+	</div>
+	</div>	
+ </div>
+</form>
+</div>
+
+						    <!-- end content-->
+					    </div>
+					    <!-- end wrap div -->
+					</div>
+					<!-- end widget  resulet -->
+					<div class="jarviswidget" id="widget-id-3">
+					    <header>
+							<h2>Execution Results</h2>                           
+					    </header>
+					    <!-- wrap div -->
+					    <div>  
+					        <div class="jarviswidget-editbox">
+					            <div>
+					                <label>Title:</label>
+					                <input type="text" />
+					            </div>
+					            <div>
+					                <label>Styles:</label>
+					                <span data-widget-setstyle="purple" class="purple-btn"></span>
+					                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+					                <span data-widget-setstyle="green" class="green-btn"></span>
+					                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+					                <span data-widget-setstyle="orange" class="orange-btn"></span>
+					                <span data-widget-setstyle="pink" class="pink-btn"></span>
+					                <span data-widget-setstyle="red" class="red-btn"></span>
+					                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+					                <span data-widget-setstyle="black" class="black-btn"></span>
+					            </div>
+					        </div>
+					    </div>
+					<div class="control-group"> 
+					<!-- 
+						<button type="button" class="btn btn-primary"  id="runtest"  >Run_test</button>
+						 -->
+						  <table id = "restable" class="table">
+						  <thead>
+							   <tr align="center">
+							   	<td width="5%"><input id="allCkb" type="checkbox" value="2" /></input></td>
+							    <td width="60%"><strong>Commands</strong></td>
+							    <td width="25%"><strong>Name</strong></td>
+							    <td width="10%"><strong>status</strong></td>
+							   
+							   </tr>
+						   </thead>
+								<tbody>
+							
+								</tbody>
+						   </table>
+						   
+						   
+					   </div>
+					  </div>
+					<!-- end widget -->
+				</article>
+				<!-- end article-->
+			</div>
+			<!-- end row-fluid -->
+		</section>
+		<!-- end widget grid -->
+	</div>		
+
+</div>
+
+{% endblock %}

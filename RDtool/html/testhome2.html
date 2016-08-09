@@ -1,0 +1,60 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <script src="/static/liger/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <title>Untitled Document</title>  
+    <script>  
+	var cmds;
+    function loadInfo() {
+        $.getJSON("/loadInfo", function(data) {
+            $("#info").html("");//Çå¿ÕinfoÄÚÈÝ
+            cmds= data.comments;
+            $.each(data.comments, function(i, item) {
+            	//[{u'GetNodeEvents': [u'Node ID', u'Tenant ID']}, {u'GetTenantLbSetting': [u'Tenant ID']}]
+                $("#command").append(
+                		"<option  >" + item.command + "</option>"
+                     );             
+            });
+            });
+    }
+    
+    function setparam(){
+    	var sec = document.getElementById('command').value;
+    	alert(sec);
+    	$("#param").html("");
+    	$("#help").html("");
+    	$.each(cmds, function(i, item) {
+    		if(item.command == sec){
+    			$("#help").append(item.help);
+    			$.each(item.param, function(j,para) {
+    				$("#param").append(
+    						" <label >" + para + "</label> <input type='text' id='" + para + "' name='subdomain' value='' /><br /><br> "
+    						
+    						);
+    			});
+    		}
+    	});
+    }
+    </script>  
+    </head>  
+      
+    <body>  
+ 
+
+  <a href="javascript:loadInfo()">load</a>
+  <div id="info">
+</div>
+<div>
+        <select id="command"  selected = "selecte command" onchange="setparam(this)"> 
+        <option  >Select command</option> 
+        </select> 
+  </div>
+  <hr/>
+  <div  id ="help"></div><br/>
+  <div id = "param"></div>
+  
+  </div>
+</form>
+    </body>  
+    </html>  

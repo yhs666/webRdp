@@ -1,0 +1,44 @@
+{% extends "fmbase.html" %}
+{% block page-content %}
+{% load staticfiles %}
+
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">History</h1>
+
+{% if log  %}
+ <br></br>
+<table class ="table table-hover">
+<thead>
+  <tr>
+     <th>ID</th>
+     <th>User</th>
+     <th>Hash</th>
+     <th>Command</th>
+     <th>Submit</th>
+     <th>JumpBoxRun</th>
+     <th>Command Done</th>
+     <th>Command Status</th>
+     <th>Create Time</th>
+  </tr>
+</thead>
+	<tbody>
+		{% for i in log %}
+		      <tr>
+		        {% for j in i %}
+		        	{% ifequal forloop.counter0  2 %}
+						<td ><a target='_blank' href=http://waps-20/getresult2/?hash={{j}} >{{j}}</a></td>
+					{% else %} 
+						<td class="danger">{{j}}</td>
+		   			{% endifequal %}         
+		        {% endfor%}
+		      </tr>
+		
+		{% endfor%}
+	</tbody>
+</table>
+{% endif %}
+</div>
+
+<!-- end main content -->
+{% endblock %}

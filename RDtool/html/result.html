@@ -1,0 +1,118 @@
+{% extends "fmbase.html" %}
+{% block page-content %}
+<!-- 
+<link href="/static/liger/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+<script src="/static/liger/js/base.js" type="text/javascript"></script>
+<script src="/static/liger/js/resulte.js" type="text/javascript"></script>
+ -->
+ <script src="/static/liger/js/base.js" type="text/javascript"></script>
+<script src="/static/js/libs/json2.js" type="text/javascript"></script>
+
+
+
+
+ <style>
+.ui-progressbar {
+	position: relative;
+}
+.progress-label {
+	position: absolute;
+	left: 50%;
+	top: 4px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #fff;
+}
+h4{
+	padding:5px 0 5px 0;
+
+}
+#appendedDropdownButton{
+	width:200%;
+}
+.alert{
+	display:none;
+}
+</style>
+
+<div id="page-content">
+	<!-- page header -->
+	<h1 id="page-header">Result</h1>
+	<div class="fluid-container">	
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+		
+			<!-- row-fluid -->
+			<div class="row-fluid">
+				<!-- article -->	
+				<article class="span12">
+					<!-- new widget -->
+					<div class="jarviswidget" id="widget-id-4">
+					    <header>
+			                <h2>Result</h2>                           
+					    </header>
+					    <!-- wrap div -->
+					    <div>
+					        <div class="jarviswidget-editbox">
+					            <div>
+					                <label>Title:</label>
+					                <input type="text" />
+					            </div>
+					            <div>
+					                <label>Styles:</label>
+					                <span data-widget-setstyle="purple" class="purple-btn"></span>
+					                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+					                <span data-widget-setstyle="green" class="green-btn"></span>
+					                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+					                <span data-widget-setstyle="orange" class="orange-btn"></span>
+					                <span data-widget-setstyle="pink" class="pink-btn"></span>
+					                <span data-widget-setstyle="red" class="red-btn"></span>
+					                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+					                <span data-widget-setstyle="black" class="black-btn"></span>
+					            </div>
+					        </div>
+					        <div > 
+					        <!-- content goes here -->
+					         <div id ="res" class="control-group"  style="overflow:auto;" >
+					         
+					         
+					         </div>
+					       
+</div>
+
+						
+					    <!-- end wrap div -->
+					</div>
+					<!-- end widget  resulet -->
+					
+						   
+						   
+					   </div>
+					  </div>
+					<!-- end widget -->
+				</article>
+				<!-- end article-->
+			</div>
+			<!-- end row-fluid -->
+		</section>
+		<!-- end widget grid -->
+	</div>		
+<script type="text/javascript">
+    var res = {{ res|safe }};
+//	alert(res);
+//console.log(res);
+    //var obj = JSON.parse(res);
+    var cmd = {{cmd|safe}};
+    var time = {{time|safe}};
+    var res_a = res.split("\r\n");
+    //var res_a = res;
+    var divi = document.getElementById('res');
+    divi.innerHTML = divi.innerHTML + "<H3>"+ cmd +"</H3><br>"
+    divi.innerHTML = divi.innerHTML + "<H4>"+ time +"</H4><br>"
+    //divi.innerHTML = divi.innerHTML + res_a+ "<br>"; 
+    for(var i=0;i < res_a.length;i++){
+    	//document.write(res[i] + "<br>");
+      divi.innerHTML = divi.innerHTML + res_a[i]+ "<br>";
+    }
+   // alert(divi.innerHTML);
+</script>    
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "fmbase.html" %}
+{% block page-content %}
+{% load staticfiles %}
+ <script src="/static/js/include/highcharts.js" type="text/javascript"></script>
+<!-- main content -->
+<div id="page-content">	
+	<!-- page header -->
+    <h1 id="page-header">Dashboard</h1>	
+    
+    <div class="fluid-container">
+
+        <!-- start icons -->
+        <div id="start">
+            <ul>
+
+                <li>
+                    <a href="/server_status" title="">
+                        <img src="{% static "img/start-icons/stats.png" %}" alt="">
+                        <span>Server Status</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fcclient" title="">
+                        <img src="{% static "img/start-icons/pending-message.png" %}" alt="">
+                        <span>FcClient</span>
+                    </a>
+                </li>
+               <li>
+                    <a href="/admin" title="">
+                        <img src="{% static "img/start-icons/add-user.png" %}" alt="">
+                        <span>Admin Center</span>
+                    </a>
+                </li>
+                
+
+            </ul>
+        </div>						
+		<!-- end start icons -->
+		
+		<div class="control-group"> 
+		{% if jupbox  %}
+			 <br></br>
+			<table class ="table table-hover">
+			<thead>
+			  <tr>
+			     <th>Server</th>
+			     <th>Status</th>
+
+		
+			  </tr>
+			</thead>
+				<tbody>
+				
+					      <tr>
+					      	<td class="danger">Jumpbox </td>
+					        {% ifequal jupbox "ok" %}
+					            <td class="danger"  bgcolor="green">OK</td>
+							{% endifequal %}
+							{% ifequal jupbox "issue" %}
+					            <td class="danger"  bgcolor="red">Issue</td>
+							{% endifequal %}
+								
+					        
+					      </tr>
+					      <tr>
+					      <td class="danger">Redis Server </td>
+					      
+					      {% ifequal redis "ok" %}
+					           <td class="danger"  bgcolor="green">OK</td>
+							{% endifequal %}
+							{% ifequal redis "issue" %}
+					          	<td class="danger"  bgcolor="red">Issue</td>
+							{% endifequal %}
+
+					      </tr>
+					
+				
+				</tbody>
+			</table>
+		{% endif %}
+		</div>>
+        <!-- widget grid -->
+
+	<!-- end widget grid -->
+</div>		
+	</div>
+	<!-- end main content -->
+{% endblock %}

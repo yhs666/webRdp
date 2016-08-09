@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>titlt</title>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<style>
+.btnl,btnr{ width:60px;height:25px;}
+</style>
+</head>
+  
+<body>
+  <button  href="/conta/" type="button" id='btnGo'>submit</button>
+<input type="text" class="showTime">
+<button class="btnl">begin</button>
+<button class="btnr">end</button>
+<script type="text/javascript">
+
+ 
+ 
+</script>
+
+<script>
+$(document).ready(function() {
+
+    // avoid hard-coding urls...
+    var yourApp = {
+        contaUrl: "/app/conta/"
+    };
+    var timeIndex = 0;
+
+    function setTime(){
+	    var hour = parseInt(timeIndex / 3600);   
+	    var minutes = parseInt((timeIndex % 3600) / 60); 
+	    var seconds = parseInt(timeIndex % 60);    
+	    hour = hour < 10 ? "0" + hour : hour;
+	    minutes = minutes < 10 ? "0" + minutes : minutes;
+	    seconds = seconds < 10 ? "0" + seconds : seconds;
+	    $(".showTime").val(hour + ":" + minutes + ":" + seconds);
+	    timeIndex++;
+    }
+
+    $('#btnGo').click(function(e) {
+        e.preventDefault();  
+        // set css classes and text of button
+		setTime();
+    	times = setInterval(setTime, 1000);
+ 			 
+        $(this)
+            .removeClass('btn-primary')
+            .addClass('btn-danger disabled') // with *disabled* I'm sure that the button is not clickable
+            .attr('disabled',"true")
+            .text('WAIT');
+
+        $.get(yourApp.contaUrl, function(json) { 
+             alert("I have finished counting");
+             window.location.href ="/app/home/"
+             //parent.window.location.reload(true);               
+
+
+        });
+    });
+ 
+    
+});
+
+</script>

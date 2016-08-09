@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>input umber</p>
+<form  method="get">
+    a: <input type="text" id="a" name="a"> <br>
+    b: <input type="text" id="b" name="b"> <br>
+    <p>result: <span id='result'></span></p>
+    <button type="button" id='sum'>submit</button>
+</form>
+ 
+ 
+<div id="dict">Ajax dict</div>
+<p id="dict_result"></p>
+ 
+<div id="list">Ajax list</div>
+<p id="list_result"></p>
+ 
+<!-- 
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+ --> 
+<script src="/static/js/libs/jquery.min.js"></script>
+<script src="/static/liger/js/base.js" type="text/javascript"></script>
+
+<script src="/static/liger/js/ligerTree.js" type="text/javascript"></script>
+<script src="/static/liger/js/ligerDrag.js" type="text/javascript"></script>
+<script src="/static/liger/js/ligerCustom.js" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function(){
+      // sum a + b
+      $("#sum").click(function(){
+        var a = $("#a").val();
+        var b = $("#b").val();
+        var a = 2;
+        var b = 4;
+        //$.get("/app/add/",{'a':a,'b':b}, function(ret){
+        $.get("/runcommand/",{'a':a,'b':b}, function(ret){
+            $('#result').html(ret);
+        })
+      });
+ 
+      //  list
+      $('#list').click(function(){
+          $.getJSON('/app/ajax_list/',function(ret){
+            //ret list
+            for (var i = ret.length - 1; i >= 0; i--) {
+              // 
+              $('#list_result').append(' ' + ret[i])
+            };
+          })
+      })
+ 
+      //  dict
+      $('#dict').click(function(){
+          $.getJSON('/app/ajax_dict/',function(ret){
+              // ret dict
+              $('#dict_result').append(ret.twz + '<br>');
+              // 
+          })
+      })
+    });
+</script>
+</body>
+</html>

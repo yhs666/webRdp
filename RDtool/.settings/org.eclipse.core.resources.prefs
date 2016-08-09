@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//app/c.py=utf-8
+encoding//app/test.py=utf-8
+encoding//app/urls.py=utf-8
+encoding//html/testhome2.html=GB18030
+encoding//main/admin.py=utf-8
+encoding//main/forms.py=utf-8
+encoding//main/migrations/0001_initial.py=utf-8
+encoding//main/migrations/0007_auto_20160424_1041.py=utf-8
+encoding//main/models.py=utf-8
+encoding//main/myredis.py=utf-8
+encoding//main/urls.py=utf-8
+encoding//main/views.py=utf-8
+encoding/<project>=UTF-8

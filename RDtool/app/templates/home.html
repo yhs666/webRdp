@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>titlt</title>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<style>
+.btnl,btnr{ width:60px;height:25px;}
+</style>
+</head>
+  
+<body>
+
+
+{% if c.alive %}
+<a href=""  role="button">WAIT</a>
+{% else %}
+
+<button  href="/conta/" type="button" id='btnGo'>submit</button>
+{% endif %}
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<input type="text" class="showTime">
+<button class="btn1">start</button>
+<button class="btnr">end</button>
+this is home
+<script>
+$(document).ready(function() {
+
+    // avoid hard-coding urls...
+    var yourApp = {
+        contaUrl: "/app/conta/"
+    };
+	
+
+    $('#btnGo').click(function(e) {
+        e.preventDefault();  
+        // set css classes and text of button
+
+ 			 
+        $(this)
+            .removeClass('btn-primary')
+            .addClass('btn-danger disabled') // with *disabled* I'm sure that the button is not clickable
+            .text('WAIT');
+
+        $.get(yourApp.contaUrl, function(json) { 
+             alert("I have finished counting");                    
+             parent.window.location.reload(true);               
+
+
+        });
+    });
+ 
+    
+});
+
+</script>
+
+<script type="text/javascript">
+ var timeIndex = 0;
+ $(".btnl").click(function(){    //
+ setTime();
+ times = setInterval(setTime, 1000);    //
+ });
+ $(".btnr").click(function(){
+ clearInterval(times);    //
+ });
+ function setTime(){
+ var hour = parseInt(timeIndex / 3600);   
+ var minutes = parseInt((timeIndex % 3600) / 60); 
+ var seconds = parseInt(timeIndex % 60);    
+ hour = hour < 10 ? "0" + hour : hour;
+ minutes = minutes < 10 ? "0" + minutes : minutes;
+ seconds = seconds < 10 ? "0" + seconds : seconds;
+ $(".showTime").val(hour + ":" + minutes + ":" + seconds);
+ timeIndex++;
+ }
+</script>
