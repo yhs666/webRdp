@@ -11,7 +11,7 @@ import os
 import logging
 from multiprocessing import Queue
 ip ="waps-20"
-password = "www.wasu.com"
+password = "******"
 time_out = 60
 FILE=os.getcwd()
 logging.basicConfig(level=logging.DEBUG,
